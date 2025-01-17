@@ -12,19 +12,46 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-html {
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
+body {
+  height: 500vh;
+  width: 100%;
+
+  .hero {
+    position: fixed;
+    width: 100%;
+    min-height: 100vh;
+    inset: 0;
+    background-image: var(--bg-portada, url('assets/frames/0.webp'));
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }
+
+/***************************SCROLL/***************************/
 
 body {
-  height: 100vh;
-  width: 100%;
-  background: #000;
-  overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
-  place-content: center;
+  --sb-track-color: #c5c5c1;
+  --sb-thumb-color: #a41f21;
+  --sb-size: 9px;
 }
 
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 1px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 1px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
